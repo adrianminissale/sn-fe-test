@@ -1,0 +1,15 @@
+{
+  "name": "suprnation",
+  "version": "1.0.0",
+  "description": "sn-fe-test",
+  "author": "adrian minissale",
+  "scripts": {
+    "task1": "ws --directory task1",
+    "task2": "ws --directory task2",
+    "task3": "ws --directory task3",
+    "task4": "ws --directory task4"
+  },
+  "dependencies": {
+    "local-web-server": "^5.0.0"
+  }
+}
