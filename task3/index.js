@@ -4,33 +4,73 @@ const expressions = []
 
 const show = () => {
   const expression = input.value
-  const result = transform( expression )
-  expressions.push( result )
-  const expsToHtml = expressions.slice(-5).reverse().join().replaceAll(',', '</br>')
-  document.getElementById( 'expressions' ).innerHTML = expsToHtml
+
+  if (expression) {
+    const transformed = transform( expression )
+    const result = resolve( transformed )
+    expressions.push( `${expression}: ${result}` )
+    const expsToHtml = expressions.slice(-5).reverse().join().replaceAll(',', '</br>')
+    document.getElementById( 'expressions' ).innerHTML = expsToHtml
+  }
 }
 
-const transform = (ex) => {
-  const result = operators.map( (op, i) => {
-    return ex = ex.replaceAll(op, jsOperators[i])
+const transform = ex => {
+  ex = operators.map( (op, i) => {
+    return ex = ex.replaceAll( ' ', '' ).replaceAll( op, jsOperators[i] )
   })
-  try {
-    return eval( result[operators.length - 1] )
-  } catch {
-    return 'Invalid Expression'
+  return ex = ex.pop()
+}
+
+const findMath = ex => {
+  if (ex.includes('Math.')) {
+    const open = ex.indexOf('(') + 1
+    const close = ex.indexOf(')')
+    const number = ex.substring(open, close)
+
+    if (ex.includes('sin'))
+      return Math.sin(number)
+    if (ex.includes('cos'))
+      return Math.cos(number)
+    if (ex.includes('tan'))
+      return Math.tan(number)
+  }
+  return parseFloat(ex)
+}
+
+const resolve = ex => {
+  if (ex.includes('+') && ex.split('').pop() !== '+') {
+    return ex.split('+').reduce((res, val) => {
+      return findMath(res) + findMath(val)
+    })
+  } else if (ex.includes('-') && ex.split('').pop() !== '-') {
+    return ex.split('-').reduce((res, val) => {
+      return findMath(res) - findMath(val)
+    })
+  } else if (ex.includes('*') && ex.split('').pop() !== '*') {
+    return ex.split('*').reduce((res, val) => {
+      return findMath(res) * findMath(val)
+    })
+  } else if (ex.includes('/') && ex.split('').pop() !== '/') {
+    return ex.split('/').reduce((res, val) => {
+      return findMath(res) / findMath(val)
+    })
   }
 }
 
 const evaluate = () => {
   const expression = input.value
-  const result = transform( expression )
 
-  if (result !== 'Invalid Expression') {
-    error.style.display = 'none'
-    btn.disabled = false
-  } else {
-    error.style.display = 'block'
-    btn.disabled = true
+  if (expression) {
+    const transformed = transform( expression )
+    const result = resolve( transformed )
+
+    if (result) {
+      error.style.display = 'none'
+      btn.disabled = false
+    } else {
+      error.style.display = 'block'
+      btn.disabled = true
+    }
   }
 }
 
