@@ -1,33 +1,13 @@
 ### Assumptions
-###### Task B only admit two terms expression, for example:
+###### User will operate with expression with same sign, for example:
 ```
   30 + 20
   30 * 20
-  130 - 10
-  130 / 10
+  130 - 10 - 40
+  130 / 10 / 54
   sin(30) + cos(20)
   sin(30) * cos(20)
-  tan(130) - sin(10)
-  tan(130) / sin(10)
-```
------------
-###### Task C only admit two terms expression, for example:
-```
-  30 + 20
-  30 * 20
-  130 - 10
-  130 / 10
-  sin(30) + cos(20)
-  sin(30) * cos(20)
-  tan(130) - sin(10)
-  tan(130) / sin(10)
-```
------------
-###### Task D only admit two terms expression, for example:
-```
-  30 + 20
-  30 * 20
-  130 - 10
-  130 / 10
+  tan(130) - sin(10) - cos(20)
+  tan(130) / sin(10) / cos(20)
 ```
 -----------

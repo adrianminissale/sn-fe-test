@@ -22,7 +22,7 @@ const transform = ex => {
 }
 
 const findMath = ex => {
-  if (ex.includes('Math.')) {
+  if (ex.toString().includes('Math.')) {
     const open = ex.indexOf('(') + 1
     const close = ex.indexOf(')')
     const number = ex.substring(open, close)
