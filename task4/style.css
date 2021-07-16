@@ -1,0 +1,45 @@
+.calculator {
+  display: flex;
+  width: 100%;
+  background: #ddd;
+  flex-wrap: wrap;
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 50px;
+  height: 100%;
+}
+.calculator > div {
+  padding: 10px;
+}
+.display {
+  width: 100%;
+  min-height: 50px;
+  background: #333;
+  text-align: right;
+  font-size: 100px;
+}
+.btn {
+  width: 25%;
+  border: 1px solid #333;
+  background: #999;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn:hover {
+  opacity: .75;
+}
+.btn.double {
+  width: 50%;
+}
+.btn.triple {
+  width: 75%;
+}
+.btn.operator {
+  background: orange;
+}
+.btn.secoperator {
+  background: #666;
+}
