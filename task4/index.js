@@ -1,13 +1,14 @@
 const input = []
 
-const result = (expression) => {
-  try {
-    input.length = 0
-    const result = eval( expression )
-    display.innerHTML = result
-    input.push( result )
-  } catch {
-    return 'Invalid Expression'
+const resolve = ex => {
+  if (ex.includes('+') && ex.split('').pop() !== '+') {
+    return ex.split('+').reduce((res, val) => parseFloat(res) + parseFloat(val))
+  } else if (ex.includes('-') && ex.split('').pop() !== '-') {
+    return ex.split('-').reduce((res, val) => parseFloat(res) - parseFloat(val))
+  } else if (ex.includes('*') && ex.split('').pop() !== '*') {
+    return ex.split('*').reduce((res, val) => parseFloat(res) * parseFloat(val))
+  } else if (ex.includes('/') && ex.split('').pop() !== '/') {
+    return ex.split('/').reduce((res, val) => parseFloat(res) / parseFloat(val))
   }
 }
 
@@ -22,7 +23,10 @@ const evaluate = async (event) => {
 
   switch (btn) {
     case '=':
-      result( input.join().replaceAll(',', '') )
+      const result = resolve( input.join().replaceAll(',', '') )
+      input.length = 0
+      display.innerHTML = result
+      input.push( result )
       break;
     case 'AC':
       display.innerHTML = 0

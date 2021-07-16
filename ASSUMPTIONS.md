@@ -23,3 +23,11 @@
   tan(130) / sin(10)
 ```
 -----------
+###### Task D only admit two terms expression, for example:
+```
+  30 + 20
+  30 * 20
+  130 - 10
+  130 / 10
+```
+-----------
