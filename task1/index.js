@@ -4,7 +4,7 @@ const expressions = ['3+2+4', '+2', '−2', 'sin(sin(30) + cos(20))', 'sin(30) +
 
 const transform = (ex) => {
   const result = operators.map( (op, i) => {
-    return ex.replaceAll(op, jsOperators[i])
+    return ex = ex.replaceAll(op, jsOperators[i])
   })
   try {
     return eval( result[operators.length - 1] ) && 'T'
