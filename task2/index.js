@@ -14,9 +14,9 @@ const transform = (ex) => {
 
 const evaluate = () => {
   const expression = document.getElementById( 'input' ).value
+
   if (expression) {
     const result = transform( expression )
-    console.log( result )
     document.getElementById( 'result' ).innerHTML = result
   }
 }

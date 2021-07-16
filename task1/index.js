@@ -15,6 +15,5 @@ const transform = (ex) => {
 
 expressions.map( ex => {
   const result = `${ex} : ${transform( ex )}`
-  console.log( result )
   document.getElementById( 'root' ).innerHTML += result + '</br>'
 })
